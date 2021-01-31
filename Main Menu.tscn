@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://edited/title.png" type="Texture" id=1]
+[ext_resource path="res://edited/desk.png" type="Texture" id=2]
+[ext_resource path="res://edited/play.png" type="Texture" id=3]
+[ext_resource path="res://Main Menu.gd" type="Script" id=4]
+[ext_resource path="res://edited/Summer_Cicadas.ogg" type="AudioStream" id=5]
+[ext_resource path="res://edited/play_pressed.png" type="Texture" id=6]
+[ext_resource path="res://cicadas.anim.tres" type="Animation" id=7]
+[ext_resource path="res://title_move.anim.tres" type="Animation" id=8]
+[ext_resource path="res://edited/esc_pressed.png" type="Texture" id=9]
+[ext_resource path="res://edited/esc_unpressed.png" type="Texture" id=10]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 122.539, 78.3358 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desk" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Node2D" parent="."]
+position = Vector2( 945.502, 214.103 )
+
+[node name="title" type="Sprite" parent="Title"]
+position = Vector2( 65.8961, 97.8947 )
+scale = Vector2( 0.319782, 0.319782 )
+texture = ExtResource( 1 )
+
+[node name="TitleMove" type="AnimationPlayer" parent="Title"]
+autoplay = "title_move"
+anims/cicadas = ExtResource( 7 )
+anims/title_move = ExtResource( 8 )
+
+[node name="Cicadas" type="AnimationPlayer" parent="Title"]
+autoplay = "cicadas"
+anims/cicadas = ExtResource( 7 )
+
+[node name="Esc" type="TextureButton" parent="."]
+margin_left = 18.404
+margin_top = 13.6792
+margin_right = 90.404
+margin_bottom = 80.6792
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 9 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="."]
+margin_left = 835.116
+margin_top = 667.265
+margin_right = 1080.12
+margin_bottom = 848.265
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+[connection signal="pressed" from="Esc" to="." method="_on_Esc_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]

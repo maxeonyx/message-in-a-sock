@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/scene.gd" type="Script" id=1]
+[ext_resource path="res://roots.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://point.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/shoe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/fire.tscn" type="PackedScene" id=7]
+[ext_resource path="res://boats.tscn" type="PackedScene" id=8]
+[ext_resource path="res://edited/wind and waves at point.ogg" type="AudioStream" id=9]
+[ext_resource path="res://scenes/bigrocks.tscn" type="PackedScene" id=10]
+[ext_resource path="res://soundholder.gd" type="Script" id=11]
+[ext_resource path="res://edited/Summer_Cicadas.ogg" type="AudioStream" id=12]
+[ext_resource path="res://edited/Seagulls.ogg" type="AudioStream" id=13]
+[ext_resource path="res://edited/Drums.ogg" type="AudioStream" id=14]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="wind and waves" type="Node" parent="Soundtrack"]
+script = ExtResource( 11 )
+soundtrack = ExtResource( 9 )
+
+[node name="drums" type="Node" parent="Soundtrack"]
+script = ExtResource( 11 )
+soundtrack = ExtResource( 14 )
+
+[node name="cicadas" type="Node" parent="Soundtrack"]
+script = ExtResource( 11 )
+soundtrack = ExtResource( 12 )
+
+[node name="seagulls" type="Node" parent="Soundtrack"]
+script = ExtResource( 11 )
+soundtrack = ExtResource( 13 )
+
+[node name="scenes" type="Node2D" parent="."]
+
+[node name="boats" parent="scenes" instance=ExtResource( 8 )]
+visible = false
+script = ExtResource( 1 )
+soundtrack = "seagulls"
+right = "bigrocks"
+
+[node name="bigrocks" parent="scenes" instance=ExtResource( 10 )]
+visible = false
+script = ExtResource( 1 )
+soundtrack = "seagulls"
+left = "boats"
+right = "roots"
+forward = "point"
+
+[node name="point" parent="scenes" instance=ExtResource( 4 )]
+visible = false
+soundtrack = "wind and waves"
+back = "bigrocks"
+
+[node name="shoe" parent="scenes" instance=ExtResource( 5 )]
+visible = false
+script = ExtResource( 1 )
+soundtrack = "cicadas"
+right = "fire"
+back = "roots"
+
+[node name="fire" parent="scenes" instance=ExtResource( 7 )]
+visible = false
+script = ExtResource( 1 )
+soundtrack = "drums"
+left = "shoe"
+
+[node name="roots" parent="scenes" instance=ExtResource( 2 )]
+visible = false
+script = ExtResource( 1 )
+soundtrack = "cicadas"
+left = "bigrocks"
+forward = "shoe"
+
+[node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="Left" parent="UI" index="1"]
+margin_left = 18.2864
+margin_top = 570.083
+margin_right = 76.2864
+margin_bottom = 617.083
+
+[node name="Right" parent="UI" index="2"]
+margin_left = 1822.86
+margin_top = 576.382
+margin_right = 1876.86
+margin_bottom = 629.382
+
+[node name="Forward" parent="UI" index="3"]
+margin_left = 1033.68
+margin_top = 181.639
+margin_right = 1129.68
+margin_bottom = 215.639
+
+[node name="Back" parent="UI" index="4"]
+margin_left = 909.643
+margin_top = 998.967
+margin_right = 1003.64
+margin_bottom = 1039.97
+[connection signal="pressed" from="UI/Esc" to="." method="_on_Esc_pressed"]
+[connection signal="pressed" from="UI/Left" to="." method="_on_Left_pressed"]
+[connection signal="pressed" from="UI/Right" to="." method="_on_Right_pressed"]
+[connection signal="pressed" from="UI/Forward" to="." method="_on_Forward_pressed"]
+[connection signal="pressed" from="UI/Back" to="." method="_on_Back_pressed"]
+
+[editable path="UI"]

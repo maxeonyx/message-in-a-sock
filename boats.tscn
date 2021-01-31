@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/boats_boat_normal.png" type="Texture" id=1]
+[ext_resource path="res://scenes/boats_seaweed_normal.png" type="Texture" id=2]
+[ext_resource path="res://scenes/boats_seaweed_pressed.png" type="Texture" id=3]
+[ext_resource path="res://scenes/boats.png" type="Texture" id=4]
+[ext_resource path="res://scenes/boats_boat_pressed.png" type="Texture" id=5]
+[ext_resource path="res://button.gd" type="Script" id=6]
+[ext_resource path="res://edited/Boat.wav" type="AudioStream" id=7]
+[ext_resource path="res://edited/seaweed.wav" type="AudioStream" id=8]
+
+[node name="boats" type="Sprite"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="seaweed" type="TextureButton" parent="."]
+margin_left = 1041.47
+margin_top = 909.488
+margin_right = 1432.47
+margin_bottom = 989.488
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="seaweed"]
+stream = ExtResource( 8 )
+
+[node name="boat" type="TextureButton" parent="."]
+margin_left = 247.728
+margin_top = 355.728
+margin_right = 836.728
+margin_bottom = 705.728
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 1 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_number = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="boat"]
+stream = ExtResource( 7 )
+volume_db = 6.38

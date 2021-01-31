@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Summer_Cicadas_data" version="1.3.0" audacityversion="2.4.1" sel0="36.5713309504" sel1="36.5713309504" vpos="0" h="34.8818439865" zoom="511.3978494624" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="Summer_Cicadas" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="1612796">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f6a5.au" len="262144" min="-0.055664" max="0.060669" rms="0.005198"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="eff1f2fa.au" len="262144" min="-0.051697" max="0.051239" rms="0.005055"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="eff1f5df.au" len="262144" min="-0.048065" max="0.046143" rms="0.005173"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="eff1feb5.au" len="262144" min="-0.054169" max="0.051575" rms="0.005357"/>
+				</waveblock>
+				<waveblock start="1048576">
+					<simpleblockfile filename="eff1f4f1.au" len="262144" min="-0.070221" max="0.061798" rms="0.006147"/>
+				</waveblock>
+				<waveblock start="1310720">
+					<simpleblockfile filename="eff1f6ef.au" len="151038" min="-0.04599" max="0.05014" rms="0.0052"/>
+				</waveblock>
+				<waveblock start="1461758">
+					<simpleblockfile filename="eff1f44e.au" len="151038" min="-0.046692" max="0.051117" rms="0.005278"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

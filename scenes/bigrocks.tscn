@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/bigrocks.png" type="Texture" id=1]
+[ext_resource path="res://scenes/bigrocks_gap.png" type="Texture" id=2]
+[ext_resource path="res://scenes/bigrocks_gap_pressed.png" type="Texture" id=3]
+[ext_resource path="res://scenes/bigrocks_redrock_normal.png" type="Texture" id=4]
+[ext_resource path="res://scenes/bigrocks_waterrock_pressed.png" type="Texture" id=5]
+[ext_resource path="res://scenes/bigrocks_waterrock_normal.png" type="Texture" id=6]
+[ext_resource path="res://scenes/bigrocks_redrock_pressed.png" type="Texture" id=7]
+[ext_resource path="res://button.gd" type="Script" id=8]
+[ext_resource path="res://edited/Water_1.wav" type="AudioStream" id=9]
+[ext_resource path="res://edited/Water_2.wav" type="AudioStream" id=10]
+[ext_resource path="res://edited/Stones_1.wav" type="AudioStream" id=11]
+
+[node name="bigrocks" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="gap" type="TextureButton" parent="."]
+margin_left = 1106.49
+margin_top = 560.623
+margin_right = 1146.49
+margin_bottom = 600.623
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_number = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="gap"]
+stream = ExtResource( 9 )
+
+[node name="redrock" type="TextureButton" parent="."]
+margin_left = 1021.41
+margin_top = 894.973
+margin_right = 1063.41
+margin_bottom = 931.973
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_number = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="redrock"]
+stream = ExtResource( 11 )
+
+[node name="waterrock" type="TextureButton" parent="."]
+margin_left = 1260.46
+margin_top = 775.62
+margin_right = 1326.46
+margin_bottom = 818.62
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_number = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="waterrock"]
+stream = ExtResource( 10 )
+volume_db = 2.552

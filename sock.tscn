@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/scene.gd" type="Script" id=1]
+[ext_resource path="res://scenes/message_pressed.png" type="Texture" id=2]
+[ext_resource path="res://scenes/message_in_sock.png" type="Texture" id=3]
+[ext_resource path="res://message.gd" type="Script" id=4]
+[ext_resource path="res://scenes/message_normal.png" type="Texture" id=5]
+[ext_resource path="res://edited/paper.wav" type="AudioStream" id=6]
+
+[node name="sock" type="Sprite"]
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 1 )
+soundtrack = "cicadas"
+left = "bigrocks"
+forward = "shoe"
+
+[node name="paper" type="TextureButton" parent="."]
+margin_left = 1443.85
+margin_top = 206.459
+margin_right = 1834.85
+margin_bottom = 448.459
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="paper"]
+stream = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="paper"]
+wait_time = 3.068

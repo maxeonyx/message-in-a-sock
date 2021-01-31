@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://message.gd" type="Script" id=1]
+[ext_resource path="res://scenes/message_pressed.png" type="Texture" id=2]
+[ext_resource path="res://scenes/sock_normal.png" type="Texture" id=3]
+[ext_resource path="res://scenes/sock.gd" type="Script" id=4]
+[ext_resource path="res://edited/paper.wav" type="AudioStream" id=5]
+[ext_resource path="res://edited/sock reveal sound.wav" type="AudioStream" id=6]
+[ext_resource path="res://scenes/message_normal.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "sock spin"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0742692, 0.0742692 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2160.0 ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="Sock_spin" type="Sprite"]
+position = Vector2( 930.352, 497.63 )
+scale = Vector2( 0.0742692, 0.0742692 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "sock spin"
+"anims/sock spin" = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="paper" type="TextureButton" parent="."]
+margin_left = 157.072
+margin_top = -193.434
+margin_right = 548.072
+margin_bottom = 244.566
+rect_scale = Vector2( 0.495, 0.486 )
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 7 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="paper"]
+stream = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="paper"]
+wait_time = 5.0
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

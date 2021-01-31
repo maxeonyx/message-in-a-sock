@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chains.wav-28adeadf0e3c743fd6c11418db100c16.sample"
+
+[deps]
+
+source_file="res://edited/chains.wav"
+dest_files=[ "res://.import/chains.wav-28adeadf0e3c743fd6c11418db100c16.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
