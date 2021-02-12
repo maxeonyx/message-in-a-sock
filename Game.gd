@@ -6,15 +6,11 @@ onready var current_scene = $scenes/bigrocks
 
 var soundtrack_changed = true
 
+var point_number = 0
+
 func _ready():
 
     enter_scene(current_scene)
-    randomize()
-    var lucky_button = randi() % 9
-    for scene in $scenes.get_children():
-        for button in scene.get_children():
-            if button.button_number == lucky_button:
-                button.has_treasure = true
 
 func get_scene(sc_name):
     for child in $scenes.get_children():
@@ -23,6 +19,13 @@ func get_scene(sc_name):
     print("Scene" + sc_name + " not found")
 
 func enter_scene(scene):
+    
+    scene.enter_count += 1
+    
+    for scene in $scenes.get_children():
+        for button in scene.get_children():
+            if scene.enter_count >= 2:
+                button.visible = true
     
     for child in $scenes.get_children():
         child.visible = false

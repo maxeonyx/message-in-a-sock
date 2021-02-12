@@ -2,12 +2,14 @@ extends TextureButton
 
 var sock = preload("res://scenes/sock_spin.tscn")
 
-export(int) var button_number
-var has_treasure = false
+export(bool) var has_treasure
 
 func _ready():
+    # the treasure hiding place isn't visible the first time you enter the scene
+    # rude but good lol
+    if has_treasure:
+        visible = false
     connect("pressed", self, "onpress")
-
 
 func onpress():
     $AudioStreamPlayer.play()
